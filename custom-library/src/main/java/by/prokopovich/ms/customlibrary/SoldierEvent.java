@@ -2,13 +2,15 @@ package by.prokopovich.ms.customlibrary;
 
 
 import java.util.Objects;
-
-
+/**
+ * SoldierEvent представляет собой сообщение, которое Kafka Producer отправляет в Kafka Broker,
+ * из которого это сообщение берет Kafka Consumer
+ */
 public class SoldierEvent {
     private String soldierId;
     private String lastName_firstName_patronymic;
 
-    public SoldierEvent(){
+    public SoldierEvent() {
 
     }
 

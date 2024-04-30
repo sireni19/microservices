@@ -14,6 +14,9 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 
+/**
+ * Класс, ответственный за за сохранение новых объектов Soldier в базу данных, является Kafka Producer-ом
+ */
 @Service
 @Slf4j
 public class SoldierServiceImpl implements SoldierService {
@@ -26,6 +29,14 @@ public class SoldierServiceImpl implements SoldierService {
         this.kafkaTemplate = kafkaTemplate;
     }
 
+    /**
+     * Метод добавляет нового солдата в базу данных и отправляет соответствующее событие в Kafka-топик.
+     *
+     * @param dto Информация о солдате в виде объекта SoldierDto.
+     * @return Идентификатор солдата, сохраненного в базе данных.
+     * @throws ExecutionException   Если возникла ошибка при выполнении операции.
+     * @throws InterruptedException Если операция была прервана.
+     */
     @Override
     public String addSoldier(SoldierDto dto) throws ExecutionException, InterruptedException {
         Soldier soldier = new Soldier(dto.getFirstName(),dto.getLastName(),dto.getPatronymic());

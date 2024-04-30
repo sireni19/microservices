@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Представляет объект SoldierDto, который используется для преобразования входящих данных JSON.
+ */
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -13,4 +16,4 @@ import lombok.Setter;
     private String lastName;
     private String firstName;
     private String patronymic;
-    }
+}

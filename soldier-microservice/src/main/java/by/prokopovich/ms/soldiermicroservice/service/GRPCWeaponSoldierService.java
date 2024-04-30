@@ -8,6 +8,10 @@ import io.grpc.stub.StreamObserver;
 import net.devh.boot.grpc.server.service.GrpcService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * Класс GRPCWeaponSoldierService представляет сервис для обработки GRPC-запросов, связанных с оружием солдат,
+ * имплементируя интерфейс WeaponServerGrpc.WeaponServerImplBase.
+ */
 @GrpcService
 public class GRPCWeaponSoldierService  extends WeaponServerGrpc.WeaponServerImplBase {
 
@@ -17,7 +21,12 @@ public class GRPCWeaponSoldierService  extends WeaponServerGrpc.WeaponServerImpl
     public GRPCWeaponSoldierService(SoldierRepository repository) {
         this.repository = repository;
     }
-
+    /**
+     * Метод addWeapon обрабатывает GRPC-запрос на добавление оружия к солдату.
+     *
+     * @param request          GRPCWeapon объект, содержащий информацию о добавляемом оружии.
+     * @param responseObserver StreamObserver для отправки ответа на GRPC-запрос.
+     */
     @Override
     public void addWeapon(GRPCWeapon request, StreamObserver<Empty> responseObserver) {
         repository.setWeapon(request.getWeaponNumber(),request.getOwnerId());

@@ -8,13 +8,23 @@ option objc_class_prefix = "RTG";
 package service;
 
 import "google/protobuf/empty.proto";
-
+/**
+ * Протокол описывает сервис WeaponServer, который предоставляет операции связанные с отправкой серийных номеров оружия.
+ */
 service WeaponServer{
 
+  /**
+ * Этим методом gRPC-клиент отправляет запрос на gRPC-сервер, получая от сервера ответ
+ * Пример: gRPC-клиент отправляет запрос с данными(2,"DF856641") и на этот запрос сервер отвечает объектом Empty
+ * @returns google.protobuf.Empty объект, представляющий пустой отклик, который сервер отправляет в ответ на request
+ */
   rpc AddWeapon(GRPCWeapon) returns (google.protobuf.Empty);
 
 }
 
+/**
+ * GRPCWeapon сообщение(gRPC-объект), содержащее информацию о том кому назначена единица оружия с номером weaponNumber
+ */
 message GRPCWeapon{
 
   int64 ownerId = 1;

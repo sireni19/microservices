@@ -11,9 +11,22 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public interface SoldierRepository extends CrudRepository<Soldier, Long> {
+     /**
+      * Сохраняет сущность солдата в базе данных.
+      *
+      * @param entity Сущность солдата для сохранения.
+      * @param <S>    Тип сущности солдата.
+      * @return Сохраненная сущность солдата.
+      */
      @Transactional
      <S extends Soldier> S save(S entity);
 
+     /**
+      * Обновляет номер оружия у солдата с заданным идентификатором.
+      *
+      * @param weaponNumber Новый номер оружия для обновления.
+      * @param soldierId    Идентификатор солдата, у которого будет обновлен номер оружия.
+      */
      @Transactional
      @Modifying
      @Query(value = "UPDATE Soldier s SET s.weaponNumber = :weaponNumber WHERE s.id = :ownerId")

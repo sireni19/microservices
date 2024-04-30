@@ -9,7 +9,11 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 public interface WeaponRepository extends CrudRepository<Weapon,Long> {
 
-
+    /**
+     * Метод назначает незанятому оружию нового владельца
+     * @param newName ФИО нового владельца
+     * @return Серийный номер оружия, которому только что назначили владельца
+     */
     @Transactional
     default String setOwnerToFreeWeapon(String newName) {
         Weapon freeWeapon = getWeaponWithNoOwner();
@@ -21,6 +25,11 @@ public interface WeaponRepository extends CrudRepository<Weapon,Long> {
             throw new EntityNotFoundException("NO FREE WEAPONS");
         }
     }
+
+    /**
+     * Метод ищет в базе данных запись с оружием, у которого нет владельца
+     * @return Объект Weapon, представляющий оружие без владельца.
+     */
     @Query(value = "SELECT * FROM weapon WHERE weapon.owner IS NULL LIMIT 1", nativeQuery = true)
     Weapon getWeaponWithNoOwner();
 }

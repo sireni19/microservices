@@ -25,6 +25,12 @@ public class SoldierController {
         this.soldierService = soldierService;
     }
 
+    /**
+     * Добавляет нового солдата, создаваемого на основе предоставленного SoldierDto
+     * @param dto - SoldierDto содержащий сведения о солдате
+     * @return ResponseEntity с идентификатором солдата, если солдат успешно добавлен
+     *         или сообщение об ошибке, если во время процесса возникает исключение
+     */
     @PostMapping
     public ResponseEntity<String> addSoldier(@RequestBody SoldierDto dto) {
         String soldierId = null;

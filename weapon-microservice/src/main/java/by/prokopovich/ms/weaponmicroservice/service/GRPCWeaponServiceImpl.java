@@ -14,10 +14,10 @@ public class GRPCWeaponServiceImpl implements GRPCWeaponService {
     private WeaponServerGrpc.WeaponServerBlockingStub weaponServerBlockingStub;
 
     @Override
-    public Long send(Long soldierId,String serialNumber) {
+    public void send(Long soldierId,String serialNumber) {
         com.example.grpc.GRPCWeapon request = com.example.grpc.GRPCWeapon.newBuilder().setOwnerId(soldierId).setWeaponNumber(serialNumber).build();
         weaponServerBlockingStub.addWeapon(request);
-        return null;
+
     }
 
 }

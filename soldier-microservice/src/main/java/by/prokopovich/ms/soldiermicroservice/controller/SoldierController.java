@@ -18,7 +18,7 @@ import java.util.concurrent.ExecutionException;
 @Slf4j
 public class SoldierController {
 
-    private SoldierService soldierService;
+    private final SoldierService soldierService;
 
     @Autowired
     public SoldierController(SoldierService soldierService) {

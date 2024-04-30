@@ -35,6 +35,5 @@ public class SoldierController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(soldierId);
-
     }
 }

@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
     public class SoldierDto {
-        private String firstName;
-        private String lastName;
-        private String patronymic;
+    private String lastName;
+    private String firstName;
+    private String patronymic;
     }
